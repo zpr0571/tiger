@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title> tiger </title>
+  <meta charset="utf-8" />
+  <style type="text/css">
+	div{
+		width:802px;
+	}
+	img{
+		border:1px solid black;
+	}
+  </style>
+  <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+  <script type="text/javascript">
+	var last;
+	var current = 0;//当前位置
+	var count;//执行次数
+
+	$(function(){
+		$("button").click(function(){
+			start();
+		});
+	});
+
+	function start(){
+		count = Math.floor(Math.random()*24)+48;
+
+		var loop = setInterval(function(){			
+
+			$("#img"+(current%24+1)).css("background","red");			
+
+			if(last!=undefined){
+				$("#img"+(last%24+1)).css("background","white");	
+			}
+			last = current++;
+			
+			
+			if(count-- == 0){
+				clearInterval(loop);
+				alert(getName($("#img"+(last%24+1)).attr("src")));
+			}
+		},100);
+	}
+
+	function getName(src){
+		switch(src){
+			case "img/1.png":return "樱桃";
+			case "img/2.png":return "葡萄";
+			case "img/3.png":return "铃铛";
+			case "img/4.png":return "双七";
+			case "img/5.png":return "西瓜";
+			case "img/6.png":return "木瓜";
+		}
+	}
+  </script>
+ </head>
+
+ <body>
+  <div>
+	  <img src="img/1.png" id="img1"/>
+	  <img src="img/2.png" id="img2"/>
+	  <img src="img/3.png" id="img3"/>
+	  <img src="img/4.png" id="img4"/>
+	  <img src="img/5.png" id="img5"/>
+	  <img src="img/6.png" id="img6"/>
+	  <img src="img/1.png" id="img7"/>
+	  <img src="img/2.png" id="img8"/>
+	  <img src="img/3.png" id="img9"/>
+  </div>
+ 
+  <div>
+	  <img src="img/3.png" id="img24"/>
+	  <img src="img/4.png" id="img10" style="float:right;"/>
+  </div>
+  
+  <div>
+	  <img src="img/5.png" id="img23"/>
+	  <img src="img/6.png" id="img11" style="float:right;"/>
+  </div>
+      
+  <div>
+	  <img src="img/1.png" id="img22"/>
+	  <img src="img/2.png" id="img12" style="float:right;"/>
+  </div>
+  
+  <div>
+	  <img src="img/1.png" id="img21"/>
+	  <img src="img/2.png" id="img20"/>
+	  <img src="img/3.png" id="img19"/>
+	  <img src="img/4.png" id="img18"/>
+	  <img src="img/5.png" id="img17"/>
+	  <img src="img/6.png" id="img16"/>
+	  <img src="img/1.png" id="img15"/>
+	  <img src="img/2.png" id="img14"/>
+	  <img src="img/3.png" id="img13"/>
+  </div>
+
+  <button>启动</button>
+ </body>
+</html>
